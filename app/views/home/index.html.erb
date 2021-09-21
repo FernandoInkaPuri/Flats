@@ -1,2 +1,7 @@
 <h1>Flats</h1>
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
+<% @properties.each do |p|%>
+    <p><%= p.title %></p>
+    <p><%= p.description %></p>
+    <p> Quartos: <%=p.rooms %></p>
+<% end %>
