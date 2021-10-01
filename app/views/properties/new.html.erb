@@ -1,0 +1,30 @@
+<h1>Flats</h1>
+<h3>Insira os dados do imóvel que deseja cadastrar</h3>
+<% if @property.errors.any? %>  
+    <% @property.errors.full_messages.each do |erro| %>
+        <p><%= erro %></p>
+    <% end %>
+<% end %>
+
+<%= form_with model: @property do |f| %>
+    <%= f.label :title, 'Título: '%>
+    <%= f.text_field :title %>
+    <% @property.errors.full_messages_for(:title).each do |erro| %>
+        <p><%= erro %></p>
+    <% end %>
+    <%= f.label :property_type_id, 'Tipo'%>
+    <%= f.collection_select :property_type_id, PropertyType.all, :id, :name %>
+    <%= f.label :description, 'Descrição: '%>
+    <%= f.text_field :description %>
+    <%= f.label :rooms, 'Quartos: '%>
+    <%= f.number_field :rooms %>
+    <%= f.label :parking_slot, 'Vaga de Estacionamento'%>
+    <%= f.check_box :parking_slot %>
+    <%= f.label :bathrooms, 'Banheiros: '%>
+    <%= f.number_field :bathrooms %>
+    <%= f.label :pets, 'Aceita Pets'%>
+    <%= f.check_box :pets %>
+    <%= f.label :daily_rate, 'Diária: '%>
+    <%= f.number_field :daily_rate %>
+    <%= f.submit 'Enviar' %>
+<% end %>
