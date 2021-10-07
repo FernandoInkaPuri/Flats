@@ -2,6 +2,7 @@
 <dt><%= @property.title%></dt>
 <dt>Tipo: <%= @property.property_type.name%></dt>
 <%= @property.description %> 
+<p>Região: <%= @property.property_location.name %></p>
 <dt>Quartos: <%= @property.rooms %></dt>
 <dt>Estacionamento:</dt>
 <%if @property.parking_slot == true %>

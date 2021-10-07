@@ -4,11 +4,13 @@ describe 'Visitor register property' do
   it 'successfully' do
     #Arrange
     PropertyType.create!(name: 'Casa')
+    PropertyLocation.create!(name:'Florianópolis')
     #Act
     visit root_path
     click_on 'Cadastrar Imóvel'
     fill_in 'Título', with: 'Casa em Florianópolis'
-    select 'Casa', from: 'Tipo'
+    select 'Casa', from: 'Tipo:'
+    select 'Florianópolis', from: 'Região:'
     fill_in 'Descrição', with: 'Ótima casa perto da UFSC'
     fill_in 'Quartos', with: '3'
     fill_in 'Banheiros', with: '2'
@@ -20,6 +22,8 @@ describe 'Visitor register property' do
     #Assert
     expect(page).to have_content('Casa em Florianópolis')
     expect(page).to have_content('Ótima casa perto da UFSC')
+    expect(page).to have_content("Tipo: Casa")
+    expect(page).to have_content("Região: Florianópolis")
     expect(page).to have_content("Quartos: 3")
     expect(page).to have_content("Banheiros: 2")
     expect(page).to have_content("Aceita Pets: Sim")

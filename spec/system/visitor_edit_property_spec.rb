@@ -3,10 +3,11 @@ require 'rails_helper'
 describe 'Visitor edit property' do
     it 'sucefully' do
         PropertyType.create!(name: 'Casa')
+        PropertyLocation.create!(name:'Maceió')
         Property.create!({title:'Mansão em Maceió', 
                   description:'Linda mansão perto da praia', 
                   rooms:3, parking_slot: true, bathrooms: 4, pets: true,
-                  daily_rate: 300, property_type_id: 1})
+                  daily_rate: 300, property_type_id: 1, property_location_id: 1 })
         visit root_path
         click_on 'Mansão em Maceió'
         click_on 'Editar informações do Imóvel'

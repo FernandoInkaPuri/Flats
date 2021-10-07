@@ -1,12 +1,25 @@
 
 <h1>Flats</h1>
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
-<nav><%= link_to('Cadastrar Imóvel', new_property_path) %></nav>
-<%=link_to('Registrar Novo Tipo de Imóvel', new_property_type_path) %>
+<table>
+    <tr>
+        <th><%= link_to('Cadastrar Imóvel ', new_property_path) %>  |  </th>
+        <th><%= link_to('Registrar Novo Tipo de Imóvel   ', new_property_type_path) %>  |  </th>
+        <th><%= link_to('Cadastrar Região    ', new_property_location_path) %></th>
+    </tr>
+</table>
 <br>
-<% @property_type.each do |pt| %>
-    <%= pt.name %>
-<% end %>
+<table>
+    <p> Tipos de propriedades</p>
+    <tr>
+        <% @property_type.each do |pt| %>
+            <td><%= pt.name %></td>
+        <% end %>
+    </tr>
+</table>
+<% @property_location.each do |pl|%>
+<%= pl.name %>
+<%end%>
 
 <% if @properties.empty? %>
 <h3> Nenhum imóvel disponível </h3>
@@ -15,5 +28,5 @@
 <% @properties.each do |p|%>
     <p><%= link_to(p.title, p) %></p>
     <p><%= p.description %></p>
-    <p> Quartos: <%=p.rooms %></p>
+    <p> Quartos: <%=p.rooms %></p><br>
 <% end %>
