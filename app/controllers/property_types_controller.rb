@@ -11,4 +11,10 @@ class PropertyTypesController < ApplicationController
             render :new
         end
     end
+
+    def show
+        @tipo = PropertyType.find(params[:id])
+        @type = Property.where("property_type_id = :id", { id: params[:id]})
+    end
+
 end

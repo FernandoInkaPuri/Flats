@@ -9,11 +9,11 @@
     </tr>
 </table>
 <br>
+<p>Tipos de propriedades</p>
 <table>
-    <p> Tipos de propriedades</p>
     <tr>
         <% @property_type.each do |pt| %>
-            <td><%= pt.name %></td>
+            <td><%= link_to(pt.name, pt)  %></td>
         <% end %>
     </tr>
 </table>
