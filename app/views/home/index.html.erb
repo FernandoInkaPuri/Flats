@@ -18,7 +18,7 @@
     </tr>
 </table>
 <% @property_location.each do |pl|%>
-<%= pl.name %>
+    <%= link_to(pl.name, pl) %>
 <%end%>
 
 <% if @properties.empty? %>

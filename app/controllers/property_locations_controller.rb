@@ -12,5 +12,8 @@ class PropertyLocationsController < ApplicationController
         end
     end
 
+    def show
+        @location = Property.where("property_location_id = ?", params[:id])
+    end
 
 end
