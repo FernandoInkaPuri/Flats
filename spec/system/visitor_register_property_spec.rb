@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Visitor register property' do
   it 'successfully' do
     #Arrange
+    proprietario = PropertyOwner.create!(email: 'luiz@fernando.com.br', password: '12345678')
     PropertyType.create!(name: 'Casa')
     PropertyLocation.create!(name:'Florianópolis')
+    login_as proprietario , scope: :property_owner
     #Act
     visit root_path
     click_on 'Cadastrar Imóvel'
@@ -30,4 +32,24 @@ describe 'Visitor register property' do
     expect(page).to have_content("Estacionamento: Sim")
     expect(page).to have_content("Diária: R$ 200,00")
   end
+
+  it 'an fill empty value' do
+    #Arrange
+    proprietario = PropertyOwner.create!(email: 'luiz@fernando.com.br', password: '12345678')
+    PropertyType.create!(name: 'Casa')
+    PropertyLocation.create!(name:'Florianópolis')
+    login_as proprietario , scope: :property_owner
+    #Act
+    visit root_path
+    click_on 'Cadastrar Imóvel'
+    click_on 'Enviar'
+
+    #Assert
+    expect(page).to have_content('Título não pode ficar em branco')
+    expect(page).to have_content('Descrição não pode ficar em branco')
+    expect(page).to have_content('Quartos não pode ficar em branco')
+    expect(page).to have_content('Banheiros não pode ficar em branco')
+    expect(page).to have_content('Diária não pode ficar em branco')
+  end
+
 end
