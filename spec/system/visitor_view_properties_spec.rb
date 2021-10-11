@@ -5,15 +5,16 @@ describe 'Visitor visit Home Page' do
     #Arrange (Preparar os dados)
     casa = PropertyType.create!(name:'Casa')
     apartamento = PropertyType.create!(name:'Apartamento')
+    peter = PropertyOwner.create!(email: 'peter@parker.com.br', password: '123456789')
     rj = PropertyLocation.create!(name:'Rio de janeiro')
     Property.create!({title:'Casa com quintal em Copabana', 
                   description:'Excelente casa, recém reformada com 2 vagas de garagem', 
                   rooms:3, parking_slot: true, bathrooms: 4, pets: true,
-                  daily_rate: 300, property_type_id: casa.id, property_location_id: rj.id   })
+                  daily_rate: 300, property_type_id: casa.id, property_location_id: rj.id, property_owner: peter  })
     Property.create!({title:'Cobertura em Manaus', 
                   description:'Cobertura de 300m2, churrasqueira e sauna privativa', 
                   rooms:5, parking_slot: true, bathrooms: 4, pets: true,
-                  daily_rate: 300, property_type_id: apartamento.id, property_location_id: rj.id})
+                  daily_rate: 300, property_type_id: apartamento.id, property_location_id: rj.id, property_owner: peter })
     #Act (Agir, executar a funcionalidade)
     visit root_path
 
@@ -34,10 +35,12 @@ describe 'Visitor visit Home Page' do
   it 'and view property details' do 
     casa = PropertyType.create!(name:'Casa')
     rj = PropertyLocation.create!(name:'Rio de janeiro')
+    peter = PropertyOwner.create!(email: 'peter@parker.com.br', password: '123456789')
+
     Property.create!({title:'Casa com quintal em Copabana', 
                 description:'Excelente casa, recém reformada com 2 vagas de garagem', 
                 rooms:3, parking_slot: true, bathrooms: 2, pets: true,
-                daily_rate: 500, property_type_id: casa.id, property_location_id: rj.id })
+                daily_rate: 500, property_type_id: casa.id, property_location_id: rj.id, property_owner: peter   })
     visit root_path
     click_on 'Casa com quintal em Copabana' 
 
@@ -56,14 +59,15 @@ describe 'Visitor visit Home Page' do
     casa = PropertyType.create!(name:'Casa')
     apartamento = PropertyType.create!(name:'Apartamento')
     rj = PropertyLocation.create!(name:'Rio de janeiro')
+    peter = PropertyOwner.create!(email: 'peter@parker.com.br', password: '123456789')
     Property.create!({title:'Casa com quintal em Copacabana', 
                   description:'Excelente casa, recém reformada com 2 vagas de garagem', 
                   rooms:3, parking_slot: true, bathrooms: 4, pets: true,
-                  daily_rate: 300, property_type_id: casa.id, property_location_id: rj.id })
+                  daily_rate: 300, property_type_id: casa.id, property_location_id: rj.id, property_owner: peter  })
     Property.create!({title:'Cobertura em Manaus', 
                   description:'Cobertura de 300m2, churrasqueira e sauna privativa', 
                   rooms:5, parking_slot: true, bathrooms: 4, pets: true,
-                  daily_rate: 300, property_type_id: apartamento.id, property_location_id: rj.id })
+                  daily_rate: 300, property_type_id: apartamento.id, property_location_id: rj.id, property_owner: peter  })
     #Act => Agir (executar a funcionalidade)
     visit root_path
     click_on 'Casa com quintal em Copacabana'

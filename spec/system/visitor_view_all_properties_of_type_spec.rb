@@ -4,11 +4,12 @@ describe 'Visitor view all properties of type' do
     it 'Sucessfuly' do 
         casa = PropertyType.create!(name:'Casa')
         apartamento = PropertyType.create!(name:'Apartamento')
+        luiz = PropertyOwner.create!(email: 'luiz@fernando.com.br', password: '12345678')
         rj = PropertyLocation.create!(name:'Rio de janeiro')
         Property.create!({title:'Casa com quintal em Copabana', 
                     description:'Excelente casa, recém reformada com 2 vagas de garagem', 
                     rooms:3, parking_slot: true, bathrooms: 2, pets: true,
-                    daily_rate: 500, property_type_id: casa.id, property_location_id: rj.id })
+                    daily_rate: 500, property_type_id: casa.id, property_location_id: rj.id, property_owner: luiz })
         
         visit root_path
         click_on 'Casa'

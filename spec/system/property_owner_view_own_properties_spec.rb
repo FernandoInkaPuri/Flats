@@ -17,17 +17,18 @@ describe 'Property owner view own properties' do
     # Arrange
     jane = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
     peter = PropertyOwner.create!(email: 'peter@parker.com.br', password: '123456789')
-
+    copacabana = PropertyLocation.create!(name:'Copacabana')
+    poa = PropertyLocation.create!(name:'Porto Alegre')
     casa = PropertyType.create!(name: 'Casa')
     Property.create!({ title: 'Casa com quintal em Copacabana', 
                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                       rooms: 3, parking_slot: true, bathrooms: 2, daily_rate: 150,
-                      property_type: casa, property_owner: jane
+                      property_type: casa, property_location_id: copacabana.id, property_owner: jane
                     })
     Property.create!({ title: 'Casa com piscina em Porto Alegre', 
                     description: 'Ótima casa, com todos acessórios e internet rápida',
                     rooms: 2, parking_slot: false, bathrooms: 1, daily_rate: 100,
-                    property_type: casa, property_owner: peter
+                    property_type: casa, property_location_id: poa.id, property_owner: peter
                   })
 
     #Act

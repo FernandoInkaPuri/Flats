@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Visitor register property' do
+describe 'Property Owner register property' do
   it 'successfully' do
     #Arrange
     proprietario = PropertyOwner.create!(email: 'luiz@fernando.com.br', password: '12345678')
@@ -31,6 +31,7 @@ describe 'Visitor register property' do
     expect(page).to have_content("Aceita Pets: Sim")
     expect(page).to have_content("Estacionamento: Sim")
     expect(page).to have_content("Diária: R$ 200,00")
+    expect(page).to have_content("Imóvel de: luiz@fernando.com.br")
   end
 
   it 'an fill empty value' do
