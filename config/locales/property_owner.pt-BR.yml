@@ -7,4 +7,5 @@ pt-BR:
       property_owner:
         password: 'Senha'
         remember_me: 'Salvar senha'
+        log_in: 'Entrar'
         
