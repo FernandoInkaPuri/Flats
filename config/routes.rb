@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :properties do 
     get 'my_properties', on: :collection
+    resources :property_reservations, only: %i[create show], shallow: true
   end
 
   resources :property_types
   resources :property_locations
+  
 
 end

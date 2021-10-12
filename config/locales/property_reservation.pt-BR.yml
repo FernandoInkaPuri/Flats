@@ -1,0 +1,12 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property_reservation: 'Reserva'   
+    controllers:
+      property_reservations:
+        create:
+          success: 'Pedido de reserva enviado com sucesso'
+ 
+        
+        
