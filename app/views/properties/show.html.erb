@@ -25,9 +25,9 @@
 <%= link_to('Editar informações do Imóvel', edit_property_path(@property)) %>
 
 
-# [@property, @property_reservation] e
-# @property_reservation, url: property_property_reservation(@property)
-# São a mesma coisa
+<% ## [@property, @property_reservation] e
+   ## @property_reservation, url: property_property_reservation(@property)
+   ## São a mesma coisa %>
 <% if property_owner_signed_in? && @property.property_owner == current_property_owner %>
     <h3>Reservas</h3>
     <% @property.property_reservations.each do |pr| %>
@@ -41,7 +41,9 @@
         <dt>Total de Pessoas:</dt>
         <dd><%= pr.guests %></dd>
         <dt>Status:</dt>
-        <dd><%= I18n.t(pr.status) %></dd>
+        <dd><%= PropertyReservation.human_attribute_name("status.#{pr.status}") %></dd>
+        <%= pr.status%>
+        <%= t(pr.status) %>
     </dl>
         
     <%= link_to 'Aceitar Reserva', accept_property_reservation_path(pr.id), method: :post %>

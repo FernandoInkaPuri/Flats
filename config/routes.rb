@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'my_profile', to: 'users#my_profile'
     resources :properties do 
     get 'my_properties', on: :collection
-    resources :property_reservations, only: %i[create show], shallow: true
+    resources :property_reservations, only: %i[create show], shallow: true do 
+      post 'accept', on: :member
+    end
   end
 
   resources :property_types
